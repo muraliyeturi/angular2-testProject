@@ -45,7 +45,6 @@
   }
   .productCarousel{
     height: 100px;
-    left:50px;
     position: absolute;
     overflow: hidden;
     ul{
@@ -69,8 +68,7 @@
 .productPrice{
   padding:25px 0px;
   b{
-    font-size: 32px;
-    font-weight: normal;
+    font-size: 30px;
   }
   span{
     font-size: 12px;
@@ -131,7 +129,7 @@
   text-transform: uppercase;
   color: #ffffff;
   text-align: center;
-  font-size: 16px;
+  font-size: 100%;
   margin-right: 1%;
   border-radius: 2px;
 }
@@ -184,7 +182,7 @@
   .returnsContent{
     @extend .textMin;
     float: right;
-    width: 85%;
+    padding-left:10px
   }
 }
 
@@ -202,7 +200,7 @@
     font-size: 36px;
     font-weight: normal;
     padding: 0px;
-    margin: 0px;
+    margin: 0px 0px 10px 0px;
   }
   ul{
     li{
