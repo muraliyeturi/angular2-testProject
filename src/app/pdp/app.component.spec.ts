@@ -19,10 +19,10 @@ describe('pdpComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it('should have product title in h1 tag', async(() => {
+  it('should have product should show price', async(() => {
     const fixture = TestBed.createComponent(pdpComponent);
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Ninja\u2122 Professional Blender with Single Serve Blending Cups');
+    fixture.detectChanges();
+    expect(compiled.querySelector('.productPrice b').textContent).toContain('$139.99');
   }));
 });

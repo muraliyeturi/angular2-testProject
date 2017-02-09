@@ -7,8 +7,8 @@ describe('my-project App', function() {
     page = new MyProjectPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display h1 with product title', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getProductTitle()).toEqual('Ninja™ Professional Blender with Single Serve Blending Cups');
   });
 });

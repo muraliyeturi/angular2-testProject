@@ -1,5 +1,5 @@
 
-<div  fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex class="coloredContainerX box" >
+<div  fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex class="coloredContainerX box">
 
   <div fxFlex>
     <h1 class="productTitle">
@@ -8,7 +8,7 @@
     <div class="productImage">
       <img src="{{defaultProductImage}}" />
     </div>
-    <div class="zoomBtn" (click)="staticModal.show()">
+    <div class="zoomBtn">
       <i class="material-icons">zoom_in</i> <span >view larger</span>
     </div>
 
@@ -225,23 +225,4 @@
   </div>
 </div>
 <div class="placeholder">
-</div>
-
-
-
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">{{productDetails.title}}</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img src="{{defaultProductImage}}" />
-      </div>
-    </div>
-  </div>
 </div>

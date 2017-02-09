@@ -49,6 +49,8 @@ https://github.com/karma-runner/karma/issues/1265
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
+ref : https://docs.angularjs.org/guide/e2e-testing
+
 ## Agile release plan
 
  1) End of the sprint merge to release branch and create a tag.

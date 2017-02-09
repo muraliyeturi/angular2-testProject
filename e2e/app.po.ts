@@ -5,7 +5,7 @@ export class MyProjectPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getProductTitle() {
+    return element(by.className('productTitle')).getText();
   }
 }
