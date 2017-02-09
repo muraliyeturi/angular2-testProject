@@ -68,9 +68,9 @@
 
   <!-- action buttons -->
   <div class="actionButtons">
-    <button class="pickUpInStore">Pick up in store</button>
-    <button class="addToCart">add to cart</button>
-    <div class="findinstore">
+    <button class="pickUpInStore" *ngIf="productDetails.puis">Pick up in store</button>
+    <button class="addToCart" *ngIf="productDetails.isOnline">add to cart</button>
+    <div class="findinstore" *ngIf="productDetails.puis">
       <a href="" class="textMin">find in a store</a>
     </div>
   </div>

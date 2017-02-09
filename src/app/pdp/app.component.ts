@@ -39,7 +39,9 @@ export class pdpComponent {
     promotions: [],
     returnPolicy: "",
     ItemDescription: [],
-    reviews: {}
+    reviews: {},
+    isOnline: true,
+    puis: true
   }
 
   cleanHtml(obj) {
@@ -53,13 +55,16 @@ export class pdpComponent {
   getDetails() {
       var vm = this;
       this._ProdcutService.getApi().then(function(data){
-        vm.productDetails.title = data[0].CatalogEntryView[0].title;
-        vm.productDetails.DPCI = data[0].CatalogEntryView[0].DPCI;
-        vm.productDetails.images =  data[0].CatalogEntryView[0].Images[0].AlternateImages;
-        vm.productDetails.promotions = data[0].CatalogEntryView[0].Promotions;
-        vm.productDetails.returnPolicy = data[0].CatalogEntryView[0].ReturnPolicy[0].legalCopy;
-        vm.productDetails.ItemDescription = data[0].CatalogEntryView[0].ItemDescription[0].features;
-        vm.productDetails.reviews = data[0].CatalogEntryView[0].CustomerReview[0];
+        var _pd = data[0].CatalogEntryView[0];
+        vm.productDetails.title = _pd.title;
+        vm.productDetails.DPCI = _pd.DPCI;
+        vm.productDetails.images =  _pd.Images[0].AlternateImages;
+        vm.productDetails.promotions = _pd.Promotions;
+        vm.productDetails.returnPolicy = _pd.ReturnPolicy[0].legalCopy;
+        vm.productDetails.ItemDescription = _pd.ItemDescription[0].features;
+        vm.productDetails.reviews = _pd.CustomerReview[0];
+        vm.productDetails.isOnline = _pd.purchasingChannelCode === "0" || _pd.purchasingChannelCode ==="1"? true : false
+        vm.productDetails.puis = _pd.purchasingChannelCode === "0" || _pd.purchasingChannelCode ==="2"? true : false
       });
    }
 

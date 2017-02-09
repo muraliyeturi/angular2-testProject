@@ -8,4 +8,11 @@ export class MyProjectPage {
   getProductTitle() {
     return element(by.className('productTitle')).getText();
   }
+  getAddToCart() {
+    return element(by.className('addToCart')).getText()
+  }
+
+  getPUIS() {
+    return element(by.className('pickUpInStore')).getText();
+  }
 }
