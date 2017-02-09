@@ -1,0 +1,247 @@
+
+<div  fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex class="coloredContainerX box" >
+
+  <div fxFlex>
+    <h1 class="productTitle">
+      {{productDetails.title}}
+    </h1>
+    <div class="productImage">
+      <img src="{{defaultProductImage}}" />
+    </div>
+    <div class="zoomBtn" (click)="staticModal.show()">
+      <i class="material-icons">zoom_in</i> <span >view larger</span>
+    </div>
+
+    <!-- product carousel -->
+    <div class="productImageCarouselContainer">
+      <div class="carouselControles">
+        <span class="prev"><i class="material-icons">chevron_left</i></span>
+        <span class="next"><i class="material-icons">chevron_right</i></span>
+      </div>
+        <div class="productCarousel">
+          <ul>
+            <li *ngFor="let image of productDetails.images">
+              <img src="{{image.image}}" (click)=changeImage(image.image) alt="Ninja™ Professional Blender with Single Serve Blending Cups"/>
+            </li>
+          </ul>
+        </div>
+
+    </div>
+    <!-- product carousel -->
+
+  </div>
+
+<div fxFlex>
+<!-- product price -->
+  <div class="productPrice">
+    <b>$139.99</b>
+    <span>online price</span>
+  </div>
+<!-- product price -->
+
+<!-- product promotion -->
+<div class="promotion">
+  <ul>
+   <li *ngFor="let promotion of productDetails.promotions;">
+      <i class="material-icons">loyalty</i> {{promotion.Description[0].shortDescription}}
+   </li>
+  </ul>
+</div>
+<!-- product promotion -->
+
+<!-- product quantity -->
+  <div class="quantity">
+    <div class="quantityButton">
+      <span class="qntyLabel">
+        quantity
+      </span>
+      <span class="quantityIncrement">
+        <i class="material-icons" (click)=setQuantity(-1)>remove_circle</i>
+          <b>
+            {{quantity}}
+          </b>
+        <i class="material-icons" (click)=setQuantity(1)>add_circle</i>
+      </span>
+    </div>
+  </div>
+  <!-- product quantity -->
+
+  <!-- action buttons -->
+  <div class="actionButtons">
+    <button class="pickUpInStore">Pick up in store</button>
+    <button class="addToCart">add to cart</button>
+    <div class="findinstore">
+      <a href="" class="textMin">find in a store</a>
+    </div>
+  </div>
+  <!-- action buttons -->
+
+  <!-- return policy -->
+  <div class="returnPolicy" layout="row" layout-wrap>
+    <div class="returnsHeader" flex>
+      <h2>returns</h2>
+    </div>
+
+    <div class="returnsContent" flex>This item must be returned within 30 days of the ship date.
+      See return policy for details. Prices, promotions, styles and availability may vary
+      by store and online.
+    </div>
+
+  </div>
+  <!-- return policy -->
+
+  <!-- secondary action buttons -->
+
+  <div class="secondaryActionButtons">
+    <button>add to registry</button>
+    <button>add to list</button>
+    <button>share</button>
+  </div>
+<!-- secondary action buttons -->
+
+<!-- product highlights -->
+  <div class="productHighlights">
+    <h2>
+      product highlights
+    </h2>
+    <ul>
+      <li *ngFor="let feature of productDetails.ItemDescription">
+        {{cleanHtml(feature)}}
+      </li>
+    </ul>
+  </div>
+  <!-- product highlights -->
+
+  </div>
+
+</div>
+
+<div  fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex class="coloredContainerX box" >
+  <div fxFlex>
+
+<!-- ratings -->
+  <div class="ratingsContainer">
+    <div fxLayout="row" class="ratingHolder">
+    <div class="rating" fxFlex>
+      <ul>
+        <li *ngFor="let star of starts">
+          <span *ngIf="star <= productDetails.reviews.consolidatedOverallRating" class="full">
+            <i class="material-icons">star_rate</i>
+          </span>
+          <span *ngIf="star > productDetails.reviews.consolidatedOverallRating" class="empty">
+            <i class="material-icons">star_rate</i>
+          </span>
+        </li>
+      </ul>
+     <div class="overall">overall</div>
+   </div>
+    <div class="viewAll" fxFlex>
+      view all {{productDetails.reviews.totalReviews}} reviews
+    </div>
+  </div>
+
+
+    <div class="reviews">
+
+      <div  fxLayout="row" >
+<!-- review pro -->
+            <div fxFlex class="reviewHolder">
+              <div class="reviewHeader">
+                <h3>PRO</h3>
+                <span class="textMin">most helpful 4-5 star review</span>
+              </div>
+              <div class="reviewContent">
+                <ul>
+                  <li *ngFor="let pro of productDetails.reviews.Pro">
+                    <div class="ratingsInline" fxLayout="row">
+                      <div class="rating">
+                          <ul>
+                            <li *ngFor="let star of starts">
+                              <span *ngIf="star <= pro.overallRating" class="full">
+                                <i class="material-icons">star_rate</i>
+                              </span>
+                              <span *ngIf="star > pro.overallRating" class="empty">
+                                <i class="material-icons">star_rate</i>
+                              </span>
+                            </li>
+                          </ul>
+                      </div>
+                    </div>
+                    <div class="reviewTitle">{{pro.title}}</div>
+                    {{pro.review}}
+                      <div class="reviewFooter">
+                        <a href="">{{pro.screenName}}</a>
+                        {{formateDate(pro.datePosted)}}
+                      </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+<!-- review pro -->
+
+<!-- review Con -->
+            <div fxFlex class="reviewHolder">
+              <div class="reviewHeader">
+                <h3>CON</h3>
+                <span class="textMin">most helpful 1-2 star review</span>
+              </div>
+              <div class="reviewContent">
+                <ul>
+                  <li *ngFor="let con of productDetails.reviews.Con">
+                    <div class="ratingsInline" fxLayout="row">
+                      <div class="rating">
+                        <ul>
+                          <li *ngFor="let star of starts">
+                            <span *ngIf="star <= con.overallRating" class="full">
+                              <i class="material-icons">star_rate</i>
+                            </span>
+                            <span *ngIf="star > con.overallRating" class="empty">
+                              <i class="material-icons">star_rate</i>
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="reviewTitle">{{con.title}}</div>
+                    {{con.review}}
+                    <div class="reviewFooter">
+                      <a href="">{{con.screenName}}</a>
+                      {{formateDate(con.datePosted)}}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+<!-- review con -->
+      </div>
+<!-- reviews end --->
+    </div>
+    <!--rating container --->
+  </div>
+</div>
+<!-- left col end -->
+  <div fxFlex>
+
+  </div>
+</div>
+<div class="placeholder">
+</div>
+
+
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{productDetails.title}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="{{defaultProductImage}}" />
+      </div>
+    </div>
+  </div>
+</div>
